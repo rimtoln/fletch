@@ -337,16 +337,18 @@ td button { padding: 3px 7px; font-size: 10px; }
 }
 #navCicada { width: 72px; height: 34px; display: block; filter: drop-shadow(0 0 8px #5eead466); }
 .chain-chip {
-  margin-left: 2px;
-  padding: 4px 9px;
-  border: 1px solid #514a31;
-  border-radius: 999px;
-  font-family: "IBM Plex Mono", Consolas, monospace;
-  font-size: 9px;
-  letter-spacing: 0.14em;
+  margin-left: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 22px;
+  letter-spacing: 0.03em;
   color: #5eead4;
-  text-transform: uppercase;
+  text-transform: none;
   white-space: nowrap;
+  font-weight: 400;
+  text-shadow: 0 0 12px #5eead433;
 }
 .hero-cicada {
   width: 100%;
@@ -676,5 +678,5 @@ td button { padding: 3px 7px; font-size: 10px; }
 .road.now li::before { background: #6BDECC; }
 
   @media (max-width: 720px) {
-    .chain-chip { display: none; }
+    .chain-chip { font-size: 16px; }
   }

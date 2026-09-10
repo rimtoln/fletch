@@ -636,7 +636,7 @@ export async function sendTx({ to, data, value = '0x0' }) {
   const eth = getProvider()
   if (!eth) throw new Error('no wallet — install MetaMask or Rabby')
   const state = await connectWallet()
-  if (!state.onChain) throw new Error('switch wallet to Robin Hood 4663')
+  if (!state.onChain) throw new Error('switch wallet to Robin Hood Chain')
   return eth.request({
     method: 'eth_sendTransaction',
     params: [{

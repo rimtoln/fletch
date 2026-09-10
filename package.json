@@ -2,7 +2,7 @@
   "name": "fletch",
   "private": true,
   "version": "0.1.0",
-  "description": "Live hatch tape for Robin Hood Chain 4663",
+  "description": "Live hatch tape for Robin Hood Chain",
   "type": "module",
   "scripts": {
     "dev": "vite",

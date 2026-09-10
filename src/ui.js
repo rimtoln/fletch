@@ -148,7 +148,7 @@ function paintWallet() {
   const onChain = connected && wallet.onChain
   const text = !connected
     ? 'disconnected'
-    : shortAddr(wallet.address) + ' · ' + (onChain ? 'Robin Hood 4663' : 'wrong chain')
+    : shortAddr(wallet.address) + ' · ' + (onChain ? 'Robin Hood Chain' : 'wrong chain')
       + (wallet.balanceEth != null ? ' · ' + wallet.balanceEth.toFixed(4) + ' ETH' : '')
   document.getElementById('walletLabel').textContent = text
   const deskWallet = document.getElementById('deskWallet')
@@ -165,7 +165,7 @@ function paintWallet() {
   if (gateBtn) gateBtn.textContent = onChain ? 'WALLET ON' : 'CONNECT WALLET'
   if (!entered && connected) {
     const gs = document.getElementById('gateStatus')
-    if (gs) gs.textContent = 'wallet ' + shortAddr(wallet.address) + ' · ' + (onChain ? 'Robin Hood 4663' : 'wrong chain')
+    if (gs) gs.textContent = 'wallet ' + shortAddr(wallet.address) + ' · ' + (onChain ? 'Robin Hood Chain' : 'wrong chain')
   }
   renderHomeStats()
 }
@@ -180,7 +180,7 @@ async function doConnect() {
   try {
     wallet = await connectWallet()
     paintWallet()
-    logger.line('FORGE', 'wallet ' + shortAddr(wallet.address) + ' · ' + (wallet.onChain ? 'Robin Hood 4663' : 'switch chain'))
+    logger.line('FORGE', 'wallet ' + shortAddr(wallet.address) + ' · ' + (wallet.onChain ? 'Robin Hood Chain' : 'switch chain'))
   } catch (err) {
     if (status) status.textContent = String(err.message || err)
     logger.line('CERBERUS', String(err.message || err))
@@ -580,7 +580,7 @@ function renderTicker() {
   const d = market && market.dex
   const top = tape[0]
   const bits = [
-    'FLETCH CICADA ROBIN HOOD 4663',
+    'FLETCH CICADA ROBIN HOOD CHAIN',
     top ? `${top.symbol} ${top.pct}% ${top.band}` : 'HUNT SYNC',
     d ? `${d.symbol} ${fmtUsd(d.priceUsd, 6)} 24H ${fmtPct(d.pct24)}` : 'NO DESK TOKEN',
     wallet && wallet.address ? `WALLET ${shortAddr(wallet.address)}` : 'WALLET OFF',
@@ -1030,7 +1030,7 @@ function bind() {
       await addRobinhoodChain()
       wallet = await readWallet()
       paintWallet()
-      logger.line('FORGE', 'Robin Hood chain 4663 in wallet')
+      logger.line('FORGE', 'Robin Hood Chain in wallet')
     } catch (err) {
       logger.line('CERBERUS', String(err.message || err))
     }
