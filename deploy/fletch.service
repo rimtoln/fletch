@@ -1,0 +1,14 @@
+[Unit]
+Description=FLETCH hunt tape
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/fletch
+Environment=PORT=4663
+ExecStart=/usr/bin/node /root/fletch/scripts/serve.mjs
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

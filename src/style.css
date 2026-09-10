@@ -336,6 +336,18 @@ td button { padding: 3px 7px; font-size: 10px; }
   display: inline-flex; align-items: center; gap: 10px;
 }
 #navCicada { width: 72px; height: 34px; display: block; filter: drop-shadow(0 0 8px #5eead466); }
+.chain-chip {
+  margin-left: 2px;
+  padding: 4px 9px;
+  border: 1px solid #514a31;
+  border-radius: 999px;
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: #5eead4;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 .hero-cicada {
   width: 100%;
   height: 210px;
@@ -663,11 +675,6 @@ td button { padding: 3px 7px; font-size: 10px; }
 }
 .road.now li::before { background: #6BDECC; }
 
-@media (max-width: 980px) {
-  .hero, .hunt-wrap, .feat-grid, .stat-row, .road-track, .how-row {
-    grid-template-columns: 1fr;
+  @media (max-width: 720px) {
+    .chain-chip { display: none; }
   }
-  .hero h1 { font-size: 40px; }
-  #huntSearch { margin-left: 0; width: 100%; }
-  .road { min-height: 0; }
-}

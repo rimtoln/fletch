@@ -148,13 +148,13 @@ function paintWallet() {
   const onChain = connected && wallet.onChain
   const text = !connected
     ? 'disconnected'
-    : shortAddr(wallet.address) + ' · ' + (onChain ? '4663' : 'wrong chain')
+    : shortAddr(wallet.address) + ' · ' + (onChain ? 'Robin Hood 4663' : 'wrong chain')
       + (wallet.balanceEth != null ? ' · ' + wallet.balanceEth.toFixed(4) + ' ETH' : '')
   document.getElementById('walletLabel').textContent = text
   const deskWallet = document.getElementById('deskWallet')
   if (deskWallet) deskWallet.textContent = text
   const btn = document.getElementById('btnWallet')
-  btn.textContent = !connected ? 'connect' : (onChain ? 'connected' : 'switch 4663')
+  btn.textContent = !connected ? 'connect' : (onChain ? 'connected' : 'switch Robin Hood')
   btn.classList.toggle('on', onChain)
   const hero = document.getElementById('btnHeroConnect')
   if (hero) {
@@ -165,7 +165,7 @@ function paintWallet() {
   if (gateBtn) gateBtn.textContent = onChain ? 'WALLET ON' : 'CONNECT WALLET'
   if (!entered && connected) {
     const gs = document.getElementById('gateStatus')
-    if (gs) gs.textContent = 'wallet ' + shortAddr(wallet.address) + ' · ' + (onChain ? '4663' : 'wrong chain')
+    if (gs) gs.textContent = 'wallet ' + shortAddr(wallet.address) + ' · ' + (onChain ? 'Robin Hood 4663' : 'wrong chain')
   }
   renderHomeStats()
 }
@@ -180,7 +180,7 @@ async function doConnect() {
   try {
     wallet = await connectWallet()
     paintWallet()
-    logger.line('FORGE', 'wallet ' + shortAddr(wallet.address) + ' · ' + (wallet.onChain ? '4663' : 'switch chain'))
+    logger.line('FORGE', 'wallet ' + shortAddr(wallet.address) + ' · ' + (wallet.onChain ? 'Robin Hood 4663' : 'switch chain'))
   } catch (err) {
     if (status) status.textContent = String(err.message || err)
     logger.line('CERBERUS', String(err.message || err))
@@ -258,7 +258,7 @@ function renderHunt() {
       <td class="delta ${clsPct(h.pct24)}">${fmtPct(h.pct24)}</td>
       <td class="why">${escapeHtml(h.why)}</td>
     </tr>`
-  }).join('') || `<tr><td colspan="10" class="muted">scanning new pools…</td></tr>`
+  }).join('') || `<tr><td colspan="10" class="muted">scanning Robin Hood pools…</td></tr>`
   body.querySelectorAll('tr[data-addr]').forEach((tr) => {
     tr.addEventListener('click', () => {
       const row = tape.find((t) => (t.address || '').toLowerCase() === tr.dataset.addr.toLowerCase())
@@ -279,12 +279,12 @@ function paintHuntStatus() {
     return
   }
   if (searchMode) {
-    st.textContent = `search ${visibleHunt().length}`
+    st.textContent = `Robin Hood search ${visibleHunt().length}`
     return
   }
   st.textContent = tape.length
-    ? `scanning · ${tape.length} · ${ago}s`
-    : 'scanning…'
+    ? `scanning Robin Hood · ${tape.length} · ${ago}s`
+    : 'scanning Robin Hood…'
 }
 
 function renderPeek(row) {
@@ -580,7 +580,7 @@ function renderTicker() {
   const d = market && market.dex
   const top = tape[0]
   const bits = [
-    'FLETCH CICADA ROBINHOOD 4663',
+    'FLETCH CICADA ROBIN HOOD 4663',
     top ? `${top.symbol} ${top.pct}% ${top.band}` : 'HUNT SYNC',
     d ? `${d.symbol} ${fmtUsd(d.priceUsd, 6)} 24H ${fmtPct(d.pct24)}` : 'NO DESK TOKEN',
     wallet && wallet.address ? `WALLET ${shortAddr(wallet.address)}` : 'WALLET OFF',
@@ -806,7 +806,7 @@ async function runSearch(q) {
     tape = rows.map((r) => scoredRow({ ...r, source: 'search' })).sort((a, b) => b.pct - a.pct)
     renderHunt()
     if (tape[0]) pickHunt(tape[0])
-    document.getElementById('huntStatus').textContent = tape.length ? `search ${tape.length}` : 'no robinhood match'
+    document.getElementById('huntStatus').textContent = tape.length ? `Robin Hood ${tape.length}` : 'no Robin Hood match'
   } catch (err) {
     document.getElementById('huntStatus').textContent = 'search miss'
     logger.line('CERBERUS', 'search miss · ' + String(err.message || err).slice(0, 36))
@@ -1030,7 +1030,7 @@ function bind() {
       await addRobinhoodChain()
       wallet = await readWallet()
       paintWallet()
-      logger.line('FORGE', 'robinhood chain 4663 in wallet')
+      logger.line('FORGE', 'Robin Hood chain 4663 in wallet')
     } catch (err) {
       logger.line('CERBERUS', String(err.message || err))
     }

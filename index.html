@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FLETCH — hunt what is valuable</title>
-  <link rel="icon" href="./cicada.png" type="image/png">
-  <meta name="description" content="Hunt what is valuable on Robinhood Chain 4663. Live hatch tape, eight-factor score, you sign the swap.">
+  <title>FLETCH — Robin Hood Chain 4663</title>
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <meta name="description" content="FLETCH is the live hatch tape for Robin Hood Chain 4663. Hunt new pools, score them, sign the swap.">
   <meta name="theme-color" content="#070806">
-  <meta property="og:title" content="FLETCH — hunt what is valuable">
-  <meta property="og:description" content="Live hatch tape for Robinhood 4663. The valuable is not listed. It is hunted.">
+  <meta property="og:title" content="FLETCH — Robin Hood Chain 4663">
+  <meta property="og:description" content="Live Robin Hood 4663 hunt tape. The valuable is not listed. It is hunted.">
   <meta property="og:url" content="https://fletch.cash">
   <meta property="og:image" content="./docs/hunt.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +25,7 @@
     <div class="gate-copy">
       <div class="seek-word">EMERGE</div>
       <h1>FLETCH</h1>
-      <p class="gate-sub">robinhood chain 4663 · hatch score for new tape</p>
+      <p class="gate-sub">Robin Hood Chain 4663 · hatch score for new tape</p>
       <p id="gateStatus" class="gate-status">hatching…</p>
       <div class="gate-acts">
         <button type="button" id="btnGateConnect">CONNECT WALLET</button>
@@ -37,6 +40,7 @@
       <a class="nav-brand" href="#hunt">
         <canvas id="navCicada" width="88" height="40" aria-hidden="true"></canvas>
         fletch
+        <span class="chain-chip">Robin Hood 4663</span>
       </a>
       <nav class="nav-links">
         <a href="#hunt">hunt</a>
@@ -45,7 +49,7 @@
         <a href="#roadmap">roadmap</a>
       </nav>
       <div class="nav-right">
-        <button type="button" id="btnNetwork">add 4663</button>
+        <button type="button" id="btnNetwork">add Robin Hood</button>
         <button type="button" id="btnWallet">connect</button>
         <span id="walletLabel" class="wallet-label">disconnected</span>
         <span id="clockUtc" class="clock">— UTC</span>
@@ -54,12 +58,13 @@
 
     <section class="hero">
       <div class="hero-copy">
-        <p class="kicker-3301">HELLO. WE ARE LOOKING FOR HIGHLY INTELLIGENT INDIVIDUALS.</p>
+        <p class="kicker-3301">ROBIN HOOD CHAIN 4663 · HELLO. WE ARE LOOKING FOR HIGHLY INTELLIGENT INDIVIDUALS.</p>
         <h1>the valuable is not listed. it is <em>hunted</em>.</h1>
         <p>
           Cicada 3301 asked you to find what was hidden. FLETCH does the same on
-          Robinhood 4663: every new pool is scanned, eight factors collapse into
-          one percent, and you sign the swap. The site never holds a key.
+          <strong>Robin Hood Chain 4663</strong>: every new Robin Hood pool is scanned,
+          eight factors collapse into one percent, and you sign the swap on Robin Hood.
+          The site never holds a key.
         </p>
         <div class="hero-acts">
           <a class="btn-fill" href="#hunt">hunt live tape</a>
@@ -67,20 +72,20 @@
           <button type="button" id="btnHeroConnect" class="btn-ghost">connect wallet</button>
         </div>
         <ol class="how-row">
-          <li><b>01</b><span>pick a hatch</span></li>
+          <li><b>01</b><span>pick a Robin Hood hatch</span></li>
           <li><b>02</b><span>quote the pool</span></li>
           <li><b>03</b><span>you sign the swap</span></li>
         </ol>
       </div>
       <aside class="pulse-card">
         <div class="pulse-head">
-          <span>3301 · 4663</span>
+          <span>Robin Hood · 4663</span>
           <a href="#hunt">hunt →</a>
         </div>
         <canvas id="heroCicada" class="hero-cicada" aria-hidden="true"></canvas>
-        <p class="cicada-epigraph">a riddle is not the prize. the search is.</p>
+        <p class="cicada-epigraph">Robin Hood 4663 · a riddle is not the prize. the search is.</p>
         <dl class="pulse-dl">
-          <div><dt>block</dt><dd id="homeBlock">—</dd></div>
+          <div><dt>Robin Hood block</dt><dd id="homeBlock">—</dd></div>
           <div><dt>gas</dt><dd id="homeGas">—</dd></div>
           <div><dt>sponsor</dt><dd id="homeSponsor">—</dd></div>
         </dl>
@@ -89,11 +94,11 @@
 
     <section class="stat-row" id="stats">
       <div class="stat-cell">
-        <span>new pools</span>
+        <span>new Robin Hood pools</span>
         <b id="statNew">—</b>
       </div>
       <div class="stat-cell">
-        <span>trending</span>
+        <span>Robin Hood trending</span>
         <b id="statTrend">—</b>
       </div>
       <div class="stat-cell">
@@ -105,7 +110,7 @@
         <b id="statPaper">—</b>
       </div>
       <div class="stat-cell">
-        <span>tx today</span>
+        <span>Robin Hood tx today</span>
         <b id="statTx">—</b>
       </div>
     </section>
@@ -113,7 +118,7 @@
     <section class="hunt-wrap" id="hunt">
       <div class="hunt-board">
         <div class="hunt-head">
-          <h2>hunt <small id="huntStatus">scanning…</small></h2>
+          <h2>hunt · Robin Hood <small id="huntStatus">scanning…</small></h2>
           <button type="button" id="btnHuntPause">pause</button>
         </div>
         <div class="hunt-tools">
@@ -129,7 +134,7 @@
             <input id="minScore" type="range" min="0" max="80" value="0">
             <b id="minScoreLabel">0%</b>
           </label>
-          <input id="huntSearch" type="search" placeholder="name, $sym, 0x…" spellcheck="false" autocomplete="off">
+          <input id="huntSearch" type="search" placeholder="Robin Hood name, $sym, 0x…" spellcheck="false" autocomplete="off">
         </div>
         <div class="hunt-table-wrap">
           <table class="hunt-table">
@@ -187,7 +192,7 @@
               <button type="button" id="btnTradeQuote">quote</button>
               <button type="button" id="btnTradeSend" class="btn-fill" disabled>swap</button>
             </div>
-            <p class="trade-note">Uniswap V4 on 4663 · you sign every swap · not financial advice</p>
+            <p class="trade-note">Uniswap V4 on Robin Hood 4663 · you sign every swap · not financial advice</p>
           </div>
           <div class="peek-acts">
             <a id="peekGmgn" class="btn-ghost" href="https://gmgn.ai/?chain=robinhood" target="_blank" rel="noreferrer">GMGN</a>
@@ -197,8 +202,8 @@
     </section>
 
     <section class="scan" id="scan">
-      <h2>scan</h2>
-      <p class="lead">Eight factors. One percent. Not a buy signal — a read of the tape GMGN already surfaces on Robinhood.</p>
+      <h2>scan · Robin Hood</h2>
+      <p class="lead">Eight factors. One percent. Not a buy signal — a read of the Robin Hood tape GMGN already surfaces on chain 4663.</p>
       <div class="feat-grid">
         <article>
           <h3>tape</h3>
@@ -236,11 +241,11 @@
     </section>
 
     <section class="roadmap" id="roadmap">
-      <h2>roadmap</h2>
+      <h2>roadmap · Robin Hood 4663</h2>
       <p class="lead">
-        Cicada 3301 hid the prize in the search. FLETCH does the same on 4663:
+        Cicada 3301 hid the prize in the search. FLETCH does the same on Robin Hood 4663:
         hunt what is valuable, score every hatch, sign only what you mean.
-        The public site starts on the tape. Desk is a sidecar you open later.
+        The public site starts on the Robin Hood tape. Desk is a sidecar you open later.
         Domain and server do not change that. Nothing after “now” sends without you.
       </p>
       <div class="road-track">
@@ -249,7 +254,7 @@
           <h3>the hunt</h3>
           <ul>
             <li>home is hunt — no hatch gate, no 1920 desk on boot</li>
-            <li>new + trending Robinhood pools scanned every few seconds</li>
+            <li>new + trending Robin Hood pools scanned every few seconds</li>
             <li>live column is scan-to-scan tick, not a frozen 5m copy of 24h</li>
             <li>8-factor percent restamped each pass: SING / HUM / MUTE</li>
             <li>search by name, $sym, or 0x · peek + signed V4 swap</li>
@@ -273,7 +278,7 @@
           <h3>watch + alerts</h3>
           <ul>
             <li>holdings: balance, cost, mark, tick vs last scan</li>
-            <li>follow wallets that actually print on 4663</li>
+            <li>follow wallets that actually print on Robin Hood 4663</li>
             <li>ping when SING dumps, liq is yanked, or a Pons curve graduates</li>
             <li>sniper / top-10 concentration as extra score legs</li>
             <li>limit and stop notes (still a wallet prompt to send)</li>
@@ -335,8 +340,8 @@
     </section>
 
     <footer class="site-foot">
-      <p>non-custodial · you sign · Uniswap V4 on Robinhood 4663 · not financial advice</p>
-      <p class="muted">HELLO. WE ARE LOOKING FOR HIGHLY INTELLIGENT INDIVIDUALS. · the valuable is hunted</p>
+      <p>FLETCH · Robin Hood Chain 4663 · non-custodial · you sign · Uniswap V4 · not financial advice</p>
+      <p class="muted">HELLO. WE ARE LOOKING FOR HIGHLY INTELLIGENT INDIVIDUALS. · the valuable is hunted on Robin Hood</p>
     </footer>
   </div>
 
@@ -349,7 +354,7 @@
 
           <header class="topbar">
             <div class="brand">
-              <span class="brand-kicker">CAM 01 // RH 4663</span>
+              <span class="brand-kicker">CAM 01 // ROBIN HOOD 4663</span>
               <strong>FLETCH</strong>
               <em class="code-badge">DESK</em>
             </div>
