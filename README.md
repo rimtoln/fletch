@@ -15,6 +15,10 @@
 </p>
 
 <p align="center">
+  <a href="https://fletch.cash"><strong>fletch.cash</strong></a>
+</p>
+
+<p align="center">
   <img alt="chain" src="https://img.shields.io/badge/chain-Robinhood%204663-5eead4?style=flat-square&labelColor=11140f">
   <img alt="stack" src="https://img.shields.io/badge/stack-vanilla%20HTML%20%2F%20JS-d6c26a?style=flat-square&labelColor=11140f">
   <img alt="amm" src="https://img.shields.io/badge/amm-Uniswap%20V4-ef7b4b?style=flat-square&labelColor=11140f">
@@ -60,26 +64,13 @@ Bands: **SING** ≥ 68 · **HUM** 42–67 · **MUTE** below that.
 
 Penalties for thin books, sell-side tape, dumps, and exit-risk mcap.
 
-## Run
+## Live
 
-Needs Node. `file://` will not load the modules — serve the folder.
+The hunt is at **[fletch.cash](https://fletch.cash)**.
 
-```bash
-node scripts/serve.mjs
-```
+Connect a wallet, pick a hatch, quote the pool, sign the swap. The site never holds a key.
 
-Open [http://127.0.0.1:5173](http://127.0.0.1:5173).
-
-The local server proxies RPC, Blockscout, GeckoTerminal, and DexScreener so the hunt can poll without CORS.
-
-If you prefer Vite:
-
-```bash
-npm i
-npm run dev
-```
-
-**add 4663** injects Robinhood Chain into an EIP-1193 wallet.
+**add 4663** on the tape injects Robinhood Chain into an EIP-1193 wallet.
 
 ## Stack
 
@@ -112,7 +103,7 @@ The USDG ticker squatter `0x8218…BB5b4` is refused.
 
 Hunt first. Host + domain second. Alerts third. Execution fourth. Prose last.
 
-`/` stays the hunt after this leaves localhost. Optional desk is not the front door.
+`/` stays the hunt on [fletch.cash](https://fletch.cash). Optional desk is not the front door.
 
 ## Disclaimer
 
