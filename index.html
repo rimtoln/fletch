@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FLETCH — hunt what is valuable</title>
+  <link rel="icon" href="./cicada.png" type="image/png">
+  <meta name="description" content="Hunt what is valuable on Robinhood Chain 4663. Live hatch tape, eight-factor score, you sign the swap.">
+  <meta name="theme-color" content="#070806">
+  <meta property="og:title" content="FLETCH — hunt what is valuable">
+  <meta property="og:description" content="Live hatch tape for Robinhood 4663. The valuable is not listed. It is hunted.">
+  <meta property="og:image" content="./docs/hunt.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="view-home">
+  <div id="gate" class="gate" hidden>
+    <pre id="gateAscii" class="gate-ascii" aria-hidden="true"></pre>
+    <div class="gate-copy">
+      <div class="seek-word">EMERGE</div>
+      <h1>FLETCH</h1>
+      <p class="gate-sub">robinhood chain 4663 · hatch score for new tape</p>
+      <p id="gateStatus" class="gate-status">hatching…</p>
+      <div class="gate-acts">
+        <button type="button" id="btnGateConnect">CONNECT WALLET</button>
+        <button type="button" id="btnGateEnter">ENTER HUNT</button>
+      </div>
+      <p class="disclaimer">you sign every swap · FLETCH never holds keys</p>
+    </div>
+  </div>
+
+  <div class="site" id="site">
+    <header class="nav">
+      <a class="nav-brand" href="#hunt">
+        <canvas id="navCicada" width="88" height="40" aria-hidden="true"></canvas>
+        fletch
+      </a>
+      <nav class="nav-links">
+        <a href="#hunt">hunt</a>
+        <a href="#trade">trade</a>
+        <a href="#scan">scan</a>
+        <a href="#roadmap">roadmap</a>
+      </nav>
+      <div class="nav-right">
+        <button type="button" id="btnNetwork">add 4663</button>
+        <button type="button" id="btnWallet">connect</button>
+        <span id="walletLabel" class="wallet-label">disconnected</span>
+        <span id="clockUtc" class="clock">— UTC</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker-3301">HELLO. WE ARE LOOKING FOR HIGHLY INTELLIGENT INDIVIDUALS.</p>
+        <h1>the valuable is not listed. it is <em>hunted</em>.</h1>
+        <p>
+          Cicada 3301 asked you to find what was hidden. FLETCH does the same on
+          Robinhood 4663: every new pool is scanned, eight factors collapse into
+          one percent, and you sign the swap. The site never holds a key.
+        </p>
+        <div class="hero-acts">
+          <a class="btn-fill" href="#hunt">hunt live tape</a>
+          <a class="btn-fill alt" href="#trade">trade a hatch</a>
+          <button type="button" id="btnHeroConnect" class="btn-ghost">connect wallet</button>
+        </div>
+        <ol class="how-row">
+          <li><b>01</b><span>pick a hatch</span></li>
+          <li><b>02</b><span>quote the pool</span></li>
+          <li><b>03</b><span>you sign the swap</span></li>
+        </ol>
+      </div>
+      <aside class="pulse-card">
+        <div class="pulse-head">
+          <span>3301 · 4663</span>
+          <a href="#hunt">hunt →</a>
+        </div>
+        <canvas id="heroCicada" class="hero-cicada" aria-hidden="true"></canvas>
+        <p class="cicada-epigraph">a riddle is not the prize. the search is.</p>
+        <dl class="pulse-dl">
+          <div><dt>block</dt><dd id="homeBlock">—</dd></div>
+          <div><dt>gas</dt><dd id="homeGas">—</dd></div>
+          <div><dt>sponsor</dt><dd id="homeSponsor">—</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="stat-row" id="stats">
+      <div class="stat-cell">
+        <span>new pools</span>
+        <b id="statNew">—</b>
+      </div>
+      <div class="stat-cell">
+        <span>trending</span>
+        <b id="statTrend">—</b>
+      </div>
+      <div class="stat-cell">
+        <span>singing now</span>
+        <b id="statSing">—</b>
+      </div>
+      <div class="stat-cell">
+        <span>wallet</span>
+        <b id="statPaper">—</b>
+      </div>
+      <div class="stat-cell">
+        <span>tx today</span>
+        <b id="statTx">—</b>
+      </div>
+    </section>
+
+    <section class="hunt-wrap" id="hunt">
+      <div class="hunt-board">
+        <div class="hunt-head">
+          <h2>hunt <small id="huntStatus">scanning…</small></h2>
+          <button type="button" id="btnHuntPause">pause</button>
+        </div>
+        <div class="hunt-tools">
+          <div class="chips-row" id="huntFilters">
+            <button type="button" data-filter="all" class="on">all</button>
+            <button type="button" data-filter="SING">SING</button>
+            <button type="button" data-filter="HUM">HUM</button>
+            <button type="button" data-filter="MUTE">MUTE</button>
+            <button type="button" data-filter="new">new</button>
+            <button type="button" data-filter="trend">trend</button>
+          </div>
+          <label class="min-score">min
+            <input id="minScore" type="range" min="0" max="80" value="0">
+            <b id="minScoreLabel">0%</b>
+          </label>
+          <input id="huntSearch" type="search" placeholder="name, $sym, 0x…" spellcheck="false" autocomplete="off">
+        </div>
+        <div class="hunt-table-wrap">
+          <table class="hunt-table">
+            <thead>
+              <tr>
+                <th>%</th>
+                <th>band</th>
+                <th>token</th>
+                <th>age</th>
+                <th>mcap</th>
+                <th>liq</th>
+                <th>vol</th>
+                <th>live</th>
+                <th>24h</th>
+                <th>why</th>
+              </tr>
+            </thead>
+            <tbody id="huntBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <aside class="peek">
+        <div class="peek-card">
+          <div class="peek-head">
+            <div>
+              <div class="seek-word" id="peekSym">PICK</div>
+              <h3 id="peekName">select a hatch</h3>
+            </div>
+            <div class="score big" id="peekScore" style="--p:0"><b>0</b></div>
+          </div>
+          <p class="addr" id="peekAddr">search or click the tape</p>
+          <div class="peek-px">
+            <span id="peekPx">—</span>
+            <span id="peekPxEth" class="muted"></span>
+          </div>
+          <canvas id="peekChart"></canvas>
+          <div class="factor-list" id="peekFactors"></div>
+          <div class="trade" id="trade">
+            <div class="trade-tabs" id="tradeTabs">
+              <button type="button" data-side="buy" class="on">buy</button>
+              <button type="button" data-side="sell">sell</button>
+            </div>
+            <div class="trade-row">
+              <label>amount
+                <input id="tradeAmt" type="text" value="0.05" spellcheck="false">
+              </label>
+              <span id="tradeUnit" class="trade-unit">ETH</span>
+              <label>slip %
+                <input id="tradeSlip" type="text" value="5" spellcheck="false">
+              </label>
+            </div>
+            <p id="tradeQuote" class="trade-quote">pick a token · connect wallet · quote · you sign the swap</p>
+            <div class="trade-acts">
+              <button type="button" id="btnTradeQuote">quote</button>
+              <button type="button" id="btnTradeSend" class="btn-fill" disabled>swap</button>
+            </div>
+            <p class="trade-note">Uniswap V4 on 4663 · you sign every swap · not financial advice</p>
+          </div>
+          <div class="peek-acts">
+            <a id="peekGmgn" class="btn-ghost" href="https://gmgn.ai/?chain=robinhood" target="_blank" rel="noreferrer">GMGN</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="scan" id="scan">
+      <h2>scan</h2>
+      <p class="lead">Eight factors. One percent. Not a buy signal — a read of the tape GMGN already surfaces on Robinhood.</p>
+      <div class="feat-grid">
+        <article>
+          <h3>tape</h3>
+          <p>24h / 1h / 5m volume. Quiet books stay muted even if the candle looks tall.</p>
+        </article>
+        <article>
+          <h3>book</h3>
+          <p>Pool depth on Uniswap. Thin liquidity is an exit tax, scored as such.</p>
+        </article>
+        <article>
+          <h3>flow</h3>
+          <p>Buy vs sell prints. HUNTER marks when the tape is one-sided.</p>
+        </article>
+        <article>
+          <h3>impulse</h3>
+          <p>5m and 1h percent. Spikes without volume do not get a free SING.</p>
+        </article>
+        <article>
+          <h3>crowd</h3>
+          <p>Holder count and top-10 concentration when Blockscout answers.</p>
+        </article>
+        <article>
+          <h3>fresh</h3>
+          <p>Age sweet-spot: new enough to matter, not so new it is still empty.</p>
+        </article>
+        <article>
+          <h3>structure</h3>
+          <p>Liquidity versus market cap. Huge mcap on a puddle is exit risk.</p>
+        </article>
+        <article>
+          <h3>x-ray</h3>
+          <p>Twitter handle heat when DexScreener has a link. Silence is a score, too.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+      <h2>roadmap</h2>
+      <p class="lead">
+        Cicada 3301 hid the prize in the search. FLETCH does the same on 4663:
+        hunt what is valuable, score every hatch, sign only what you mean.
+        The public site starts on the tape. Desk is a sidecar you open later.
+        Domain and server do not change that. Nothing after “now” sends without you.
+      </p>
+      <div class="road-track">
+        <article class="road now">
+          <div class="road-when">now · live</div>
+          <h3>the hunt</h3>
+          <ul>
+            <li>home is hunt — no hatch gate, no 1920 desk on boot</li>
+            <li>new + trending Robinhood pools scanned every few seconds</li>
+            <li>live column is scan-to-scan tick, not a frozen 5m copy of 24h</li>
+            <li>8-factor percent restamped each pass: SING / HUM / MUTE</li>
+            <li>search by name, $sym, or 0x · peek + signed V4 swap</li>
+            <li>Pons hook pools included · you sign every send</li>
+            <li>paper blotter to rehearse size without a tx</li>
+          </ul>
+        </article>
+        <article class="road now">
+          <div class="road-when">next 30 days</div>
+          <h3>public host</h3>
+          <ul>
+            <li>move off localhost onto a server you control</li>
+            <li>buy a domain · `/` stays the hunt, desk stays a link</li>
+            <li>HTTPS + wallet connect on the real origin</li>
+            <li>keep the 2–3s scan loop; deepen pages 2–3 in the background</li>
+            <li>status line that never looks idle: scanning · N · Ns</li>
+            <li>favicon + OG still the dotted cicada</li>
+          </ul>
+        </article>
+        <article class="road">
+          <div class="road-when">q4 2026</div>
+          <h3>watch + alerts</h3>
+          <ul>
+            <li>holdings: balance, cost, mark, tick vs last scan</li>
+            <li>follow wallets that actually print on 4663</li>
+            <li>ping when SING dumps, liq is yanked, or a Pons curve graduates</li>
+            <li>sniper / top-10 concentration as extra score legs</li>
+            <li>limit and stop notes (still a wallet prompt to send)</li>
+            <li>mute / unmute bands per token without leaving hunt</li>
+            <li>share a hatch as a URL that opens peek, not desk</li>
+          </ul>
+        </article>
+        <article class="road">
+          <div class="road-when">q1 2027</div>
+          <h3>gated execution</h3>
+          <ul>
+            <li>session keys so a second click does not re-prompt</li>
+            <li>multi-hop when a single pool is too thin to exit</li>
+            <li>wrap / unwrap leftover WETH in one sign</li>
+            <li>real-fill blotter beside paper, same columns</li>
+            <li>gas-sponsor aware quotes while the 90-day window lasts</li>
+            <li>bonding-curve quotes before a hatch hits V4</li>
+            <li>simulate revert before you approve the prompt</li>
+          </ul>
+        </article>
+        <article class="road">
+          <div class="road-when">q2 2027</div>
+          <h3>briefs</h3>
+          <ul>
+            <li>per-token writeup: why SING, why MUTE, which factor flipped</li>
+            <li>compare two hatches on one board</li>
+            <li>optional LLM note on the same eight numbers, never a buy call</li>
+            <li>copy-tape: watch a wallet, paper-mirror, then opt in to sign</li>
+            <li>export the hunt as a timestamped brief</li>
+            <li>factor history: score over the last hour of scans</li>
+          </ul>
+        </article>
+        <article class="road">
+          <div class="road-when">later</div>
+          <h3>the long board</h3>
+          <ul>
+            <li>mobile hunt that still reads as a tape, not a casino</li>
+            <li>saved watchlists in local storage, then optional account</li>
+            <li>CSV blotter export</li>
+            <li>never custodial · never a bot that sends without you</li>
+            <li>desk remains a tool you open, not the front door</li>
+            <li>if a feature needs keys, it does not ship</li>
+          </ul>
+        </article>
+      </div>
+      <div class="road-notes">
+        <p>
+          HELLO. WE ARE LOOKING FOR HIGHLY INTELLIGENT INDIVIDUALS. The valuable
+          is not listed. It is hunted. 3301 hid the prize in the work of finding
+          it. FLETCH hides nothing: the score is public, the swap is yours to
+          sign, the desk is a sidecar.
+        </p>
+        <p>
+          Shipping order does not change when this leaves this machine: hunt
+          first, host + domain second, alerts third, execution fourth, prose
+          last. Optional desk lives behind a link. `/` is still the hunt.
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-foot">
+      <p>non-custodial · you sign · Uniswap V4 on Robinhood 4663 · not financial advice</p>
+      <p class="muted">HELLO. WE ARE LOOKING FOR HIGHLY INTELLIGENT INDIVIDUALS. · the valuable is hunted</p>
+    </footer>
+  </div>
+
+  <div class="desk-stage" id="deskStage" hidden>
+    <div class="viewport">
+      <div class="stage" id="stage">
+        <div class="canvas">
+          <div class="scanlines" aria-hidden="true"></div>
+          <div class="vignette" aria-hidden="true"></div>
+
+          <header class="topbar">
+            <div class="brand">
+              <span class="brand-kicker">CAM 01 // RH 4663</span>
+              <strong>FLETCH</strong>
+              <em class="code-badge">DESK</em>
+            </div>
+            <div class="pulse-row">
+              <span class="live-dot" id="liveDot"></span>
+              <span id="pulseBlock">BLK —</span>
+              <span id="pulseGas">GAS —</span>
+              <span id="pulseTx">TX —</span>
+              <span id="pulseSubsidy" class="subsidy">SPONSOR —</span>
+            </div>
+            <div class="top-actions">
+              <button type="button" id="btnHome">HOME</button>
+              <span id="deskWallet" class="wallet-label">disconnected</span>
+            </div>
+          </header>
+
+          <div class="h-main">
+            <aside class="left-col">
+              <section class="panel token-card">
+                <div class="token-id">
+                  <div>
+                    <div class="seek-word" id="tokenKicker">SEEK</div>
+                    <h1 id="tokenName">—</h1>
+                    <p class="addr" id="tokenAddr">pick from hunt</p>
+                  </div>
+                  <div class="px-block">
+                    <div class="px" id="tokenPx">—</div>
+                    <div class="px-eth" id="tokenPxEth">—</div>
+                  </div>
+                </div>
+                <div class="delta-row" id="deltaRow">
+                  <span>5M <b id="d5">—</b></span>
+                  <span>1H <b id="d1h">—</b></span>
+                  <span>6H <b id="d6h">—</b></span>
+                  <span>24H <b id="d24">—</b></span>
+                </div>
+                <dl class="stats tight" id="statList">
+                  <div><dt>MCAP</dt><dd id="statMcap">—</dd></div>
+                  <div><dt>LIQ</dt><dd id="statLiq">—</dd></div>
+                  <div><dt>HOLDERS</dt><dd id="statHolders">—</dd></div>
+                  <div><dt>VOL 24H</dt><dd id="statVol">—</dd></div>
+                  <div><dt>FDV</dt><dd id="statFdv">—</dd></div>
+                  <div><dt>BUYS/SELLS</dt><dd id="statFlow">—</dd></div>
+                </dl>
+                <div class="chips" id="auditChips"></div>
+                <div class="holder-bars" id="holderBars"></div>
+              </section>
+              <section class="ascii-wrap panel">
+                <div class="ascii-meta">
+                  <span>FIG 03 / CICADA</span>
+                  <span id="asciiHeat">heat 0.00</span>
+                </div>
+                <canvas id="ascii" class="ascii" aria-hidden="true"></canvas>
+              </section>
+            </aside>
+
+            <section class="chart-col panel">
+              <div class="chart-head">
+                <h2>PRICE <b id="chartMeta">UNISWAP · 5M</b></h2>
+                <div class="tf">
+                  <button type="button" data-tf="1">1M</button>
+                  <button type="button" data-tf="5" class="on">5M</button>
+                  <button type="button" data-tf="15">15M</button>
+                </div>
+              </div>
+              <canvas id="priceChart"></canvas>
+              <canvas id="volChart"></canvas>
+            </section>
+
+            <div class="side">
+              <section class="panel agents">
+                <h2>AGENT ARRAY</h2>
+                <div id="agentArray" class="agent-array"></div>
+              </section>
+              <section class="panel term">
+                <h2>TRADES <b id="tradeCount">LIVE</b></h2>
+                <div class="table-scroll trades">
+                  <table>
+                    <thead>
+                      <tr><th>AGE</th><th>SIDE</th><th>USD</th><th>MAKER</th></tr>
+                    </thead>
+                    <tbody id="tradeBody"></tbody>
+                  </table>
+                </div>
+              </section>
+              <section class="panel term">
+                <h2>HOLDERS <b>TOP</b></h2>
+                <div class="table-scroll trades">
+                  <table>
+                    <thead>
+                      <tr><th>#</th><th>WALLET</th><th>%</th></tr>
+                    </thead>
+                    <tbody id="holderBody"></tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="h-bottom">
+            <section class="panel table-panel">
+              <h2>HOT TAPE <b>AGENT MARKS</b></h2>
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr><th>SYM</th><th>AGENT</th><th>SCORE</th><th>WHY</th><th></th></tr>
+                  </thead>
+                  <tbody id="hotBody"></tbody>
+                </table>
+              </div>
+            </section>
+            <section class="panel table-panel">
+              <h2>X-RAY <b id="twHead">TWITTER</b></h2>
+              <div id="twBox" class="tw-box muted">no handle yet</div>
+            </section>
+            <section class="panel blotter-panel">
+              <h2>PAPER DESK <b id="paperCash">—</b></h2>
+              <div id="proposalBox" class="proposal empty">no live proposal</div>
+              <div class="table-scroll blotter-scroll">
+                <table>
+                  <thead>
+                    <tr><th>T</th><th>SIDE</th><th>SYM</th><th>QTY</th><th>PX</th><th>PNL</th></tr>
+                  </thead>
+                  <tbody id="blotterBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+
+          <footer class="quote-strip">
+            <div class="quote-fields">
+              <label>QUOTE IN
+                <input id="quoteAmount" type="text" value="0.05" spellcheck="false">
+                <span>ETH</span>
+              </label>
+              <label>TOKEN
+                <input id="quoteToken" type="text" placeholder="0x…" spellcheck="false">
+              </label>
+              <button type="button" id="btnQuote">QUOTE</button>
+              <label>SLIP
+                <input id="deskSlip" type="text" value="5" spellcheck="false">
+                <span>%</span>
+              </label>
+              <button type="button" id="btnSwapBuy">BUY</button>
+              <button type="button" id="btnSwapSell">SELL</button>
+              <button type="button" id="btnLoad">LOAD DESK</button>
+              <span id="quoteOut" class="quote-out">quote, then sign a swap · no hidden send</span>
+            </div>
+            <button type="button" id="btnPaperQuote" disabled>PAPER THIS QUOTE</button>
+          </footer>
+
+          <div class="ticker" id="ticker">
+            <div class="ticker-track" id="tickerTrack"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
